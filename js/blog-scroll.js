@@ -73,4 +73,58 @@ function handleSwipe() {
             prevBtn.click();
         }
     }
+}
+
+class BlogScroller {
+    constructor() {
+        this.container = document.querySelector('.blog-cards-container');
+        this.prevBtn = document.getElementById('prevBlog');
+        this.nextBtn = document.getElementById('nextBlog');
+        this.scrollAmount = 300; // Adjust based on your card width
+        this.scrolling = false;
+        
+        this.init();
+    }
+
+    init() {
+        // Add click events
+        this.prevBtn.addEventListener('click', () => this.scroll('left'));
+        this.nextBtn.addEventListener('click', () => this.scroll('right'));
+        
+        // Check scroll position on load
+        this.checkScrollPosition();
+        
+        // Check scroll position when scrolling ends
+        this.container.addEventListener('scroll', () => {
+            if (!this.scrolling) {
+                window.requestAnimationFrame(() => {
+                    this.checkScrollPosition();
+                    this.scrolling = false;
+                });
+            }
+            this.scrolling = true;
+        });
+    }
+
+    scroll(direction) {
+        const currentScroll = this.container.scrollLeft;
+        const newScroll = direction === 'left' 
+            ? currentScroll - this.scrollAmount 
+            : currentScroll + this.scrollAmount;
+            
+        this.container.scrollTo({
+            left: newScroll,
+            behavior: 'smooth'
+        });
+    }
+
+    checkScrollPosition() {
+        const isAtStart = this.container.scrollLeft === 0;
+        const isAtEnd = this.container.scrollLeft + this.container.offsetWidth >= 
+                       this.container.scrollWidth;
+
+        // Update button states
+        this.prevBtn.classList.toggle('disabled', isAtStart);
+        this.nextBtn.classList.toggle('disabled', isAtEnd);
+    }
 } 

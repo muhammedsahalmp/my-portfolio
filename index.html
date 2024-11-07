@@ -32,7 +32,11 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/blog-slider.css">
+
+    <link rel="stylesheet" href="css/newsletter.css">
 </head>
+
 
 <body class="body-dark-mode">
     <!--[if lte IE 9]>
@@ -82,7 +86,7 @@
                                             <a href="#work">Works</a>
                                         </li>
                                         <li>
-                                            <a href="#service">service</a>
+                                            <a href="#servises">service</a>
                                         </li>
                                         <li>
                                             <a href="#blog">Blog</a>
@@ -191,7 +195,7 @@
                                                 class="cursor theme-color d-inline-block" data-owner="main"></span>
                                         </span>
                                     </h2>
-                                    <a href="#hero-btn"
+                                    <a href="#contact"
                                         class="btn position-relative over-hidden theme-bg text-uppercase transition5">Say
                                         Hello</a>
                                 </div><!-- /slider-content -->
@@ -713,7 +717,7 @@
         ==================================================== -->
       
             <div class="container">
-                <div class="row">
+                <div class="row" id="servises">
                     <div class="col-xl-5 col-lg-6 col-md-12">
                         <div class="intro-content">
                             <div class="intro-header">
@@ -823,12 +827,7 @@
                         </div>
                     </div>
                 </div><!-- /container -->
-                <div class="fact-style1 position-absolute d-none d-md-inline-block">
-                    <img style="opacity: 0.1;" src="images/shape/my logo.png" alt="shape 1">
-                </div><!-- /fact-style1 -->
-                <div class="fact-style2 position-absolute d-none d-md-inline-block">
-                    <img src="images/shape/my logo.png" alt="shape 2">
-                </div><!-- /fact-style2 -->
+              
             </div>
             <!-- fun-fact-area-end  -->
             <!-- ====== award-area-start 
@@ -2141,19 +2140,26 @@
                 </div>
             </div>
 
-            <!-- Newsletter -->
-            <div class="newsletter-column">
-                <h2 class="section-title">Stay Updated</h2>
-                <div class="tech-form">
-                    <div class="input-group">
-                        <input type="email" class="tech-input" placeholder="Enter your email">
-                        <button type="submit" class="tech-button">
-                            Subscribe
-                            <span class="button-glow"></span>
-                        </button>
-                    </div>
-                </div>
-            </div>
+           <!-- Newsletter -->
+<div class="newsletter-column">
+    <h2 class="section-title">Stay Updated</h2>
+    <form id="newsletterForm" class="tech-form">
+        <div class="input-group">
+            <input 
+                type="email" 
+                id="emailInput"
+                class="tech-input" 
+                placeholder="Enter your email"
+                required
+            >
+            <button type="submit" class="tech-button">
+                Subscribe
+                <span class="button-glow"></span>
+            </button>
+        </div>
+        <div id="formMessage" class="form-message"></div>
+    </form>
+</div>
 
             <!-- Social Links -->
             <div class="social-bar">
@@ -2182,7 +2188,7 @@
     </div>
 </footer>
         <div id="scroll" class="scrollTop text-right">
-            <a href="#" class="theme-bg primary-color text-center d-inline-block mr-10 transition5">
+            <a href="#home" class="theme-bg primary-color text-center d-inline-block mr-10 transition5">
                 <span><i class="fal fa-angle-double-up"></i></span>
             </a>
         </div>
@@ -2216,6 +2222,10 @@
         <script src="js/formvalidation.js"></script>
         <script src="js/newsletter.js"></script>
         <script src="js/contact-effects.js"></script>
+        <script src="js/blog-slider.js"></script>
+        
+
+       
 </body>
 
 </html>

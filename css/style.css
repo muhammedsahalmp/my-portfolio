@@ -2995,7 +2995,6 @@ span#main {
 
 
 
-
 /* footer section started*/
 .tech-footer {
   background: #13151a;
@@ -3504,3 +3503,343 @@ span#main {
 /* contact section end*/
 
 /* main.css end */
+
+/* Reset and core fixes */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    background: #1E1E1E;
+}
+
+/* Main wrapper */
+.main-wrapper {
+    width: 100%;
+    max-width: 100vw;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Hero section fixes */
+.hero-section {
+    width: 100%;
+    position: relative;
+    padding: 0 5%;
+}
+
+.hero-content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Image container fix */
+.hero-image-container {
+    position: relative;
+    width: 45%;
+    right: 0;
+    overflow: hidden;
+}
+
+.hero-image-container img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Blog section fixes */
+.blog-section {
+    width: 100%;
+    padding: 0 5%;
+    overflow: hidden;
+}
+
+/* Navigation fixes */
+.nav-container {
+    width: 100%;
+    padding: 20px 5%;
+    position: relative;
+}
+
+/* Social icons fix */
+.social-icons {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+}
+
+/* Learn More button fix */
+.learn-more-btn {
+    width: 100%;
+    max-width: 90%;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Responsive fixes */
+@media (max-width: 1200px) {
+    .hero-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .hero-image-container {
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container {
+        padding: 15px 3%;
+    }
+
+    .hero-section,
+    .blog-section {
+        padding: 0 3%;
+    }
+}
+
+/* Reset scrollbar behavior */
+html {
+    scrollbar-width: thin;  /* For Firefox */
+    scrollbar-color: #9333EA #1E1E1E;  /* For Firefox */
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background: #1E1E1E;
+}
+
+/* Custom scrollbar styling for webkit browsers */
+::-webkit-scrollbar {
+    width: 8px;
+    background: #1E1E1E;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9333EA;
+    border-radius: 4px;
+}
+
+/* Main container fixes */
+.main-container {
+    width: 100vw;
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+    overflow-x: clip;
+}
+
+/* Content wrapper */
+.content-wrapper {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 5vw;
+}
+
+/* Fix for absolute positioned elements */
+.hero-image,
+.decorative-elements {
+    position: absolute;
+    max-width: 100%;
+    pointer-events: none;
+}
+
+/* Ensure all sections stay within bounds */
+section {
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Media queries for responsive design */
+@media screen and (max-width: 768px) {
+    .content-wrapper {
+        padding: 0 20px;
+    }
+}
+
+/* Modern scrollbar styling */
+html {
+    scrollbar-width: thin;  /* Firefox */
+    scrollbar-color: #9333EA #1E1E1E;  /* Firefox */
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 3px;  /* Make scrollbar very thin */
+}
+
+::-webkit-scrollbar-track {
+    background: #1E1E1E;  /* Dark background */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9333EA;  /* Purple color */
+    border-radius: 1.5px;  /* Slightly rounded edges */
+}
+
+/* For Firefox specific */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #9333EA #1E1E1E;
+}
+
+/* Hover effect (optional) */
+::-webkit-scrollbar-thumb:hover {
+    background: #a64dff;  /* Slightly lighter purple on hover */
+}
+
+/* Modern minimal scrollbar */
+html {
+    scrollbar-width: thin;
+    scrollbar-color: #9333EA transparent;
+}
+
+/* Webkit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 1px;  /* Ultra thin line */
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;  /* Completely transparent track */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #9333EA;  /* Vibrant purple line */
+    border-radius: 0;  /* Sharp edges */
+}
+
+/* Hide scrollbar track completely */
+::-webkit-scrollbar-track-piece {
+    background: transparent;
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #9333EA transparent;
+}
+
+/* Remove any hover effects */
+::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:active {
+    background: #9333EA;
+}
+
+/* Ensure body settings */
+body {
+    overflow-x: hidden;
+    scrollbar-width: thin;
+}
+
+/* Ultimate minimal scrollbar styling */
+html {
+    --scrollbar-color: #9333EA;
+    --scrollbar-width: 2px;
+    
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: var(--scrollbar-color) transparent;
+    
+    /* Ensure smooth scrolling */
+    scroll-behavior: smooth;
+}
+
+/* Hide default scrollbar but keep functionality */
+body::-webkit-scrollbar,
+* ::-webkit-scrollbar {
+    width: var(--scrollbar-width);
+    background: transparent;
+}
+
+/* Hide scrollbar in Firefox while keeping functionality */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: transparent transparent;
+}
+
+/* Custom scrollbar styling */
+body::-webkit-scrollbar-thumb,
+* ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-color);
+    border-radius: 0;
+    
+    /* Gradient effect for more polish */
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        var(--scrollbar-color) 10%,
+        var(--scrollbar-color) 90%,
+        transparent 100%
+    );
+}
+
+/* Hide all scrollbar elements */
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece,
+::-webkit-scrollbar-corner,
+::-webkit-resizer {
+    display: none;
+}
+
+/* Ensure body settings */
+body {
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+    /* Prevent scrollbar from affecting layout */
+    margin-right: calc(-1 * var(--scrollbar-width));
+    
+    /* Smooth scroll for modern browsers */
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Optimize performance */
+@supports (scrollbar-gutter: stable) {
+    html {
+        scrollbar-gutter: stable;
+    }
+}
+
+/* Media query for touch devices */
+@media (hover: none) and (pointer: coarse) {
+    ::-webkit-scrollbar {
+        width: 0;
+       
+    }
+    
+    * {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        margin-top: -7px;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    html {
+        --scrollbar-color: #9333EA;
+    }
+}

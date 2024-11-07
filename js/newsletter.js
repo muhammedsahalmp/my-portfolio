@@ -1,50 +1,76 @@
-document.getElementById('newsletterForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    
-    const email = form.querySelector('#newsletterEmail').value;
-    const responseDiv = form.querySelector('.newsletter-response');
-    const submitButton = form.querySelector('.newsletter-submit');
-    
-    // Disable submit button and show loading state
-    submitButton.disabled = true;
-    submitButton.innerHTML = '<i class="fal fa-spinner fa-spin"></i>';
-    
-    try {
-        const response = await fetch(form.action, {
+class Newsletter {
+    constructor() {
+        this.form = document.getElementById('newsletterForm');
+        this.emailInput = document.getElementById('emailInput');
+        this.submitButton = this.form.querySelector('.tech-button');
+        this.messageDiv = document.getElementById('formMessage');
+        
+        this.init();
+    }
+
+    init() {
+        this.form.addEventListener('submit', (e) => this.handleSubmit(e));
+    }
+
+    async handleSubmit(e) {
+        e.preventDefault();
+        
+        if (!this.validateEmail()) return;
+        
+        const email = this.emailInput.value;
+        
+        try {
+            this.setLoading(true);
+            const response = await this.submitSubscription(email);
+            
+            if (response.success) {
+                this.showSuccess('Thank you! Please check your email to confirm subscription.');
+                this.form.reset();
+            } else {
+                this.showError(response.message);
+            }
+        } catch (error) {
+            this.showError('Subscription failed. Please try again.');
+            console.error('Error:', error);
+        } finally {
+            this.setLoading(false);
+        }
+    }
+
+    validateEmail() {
+        const email = this.emailInput.value;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+
+    async submitSubscription(email) {
+        const response = await fetch('/api/subscribe.php', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Accept': 'application/json'
             },
-            body: JSON.stringify({
-                email: email,
-                subject: 'New Newsletter Subscription',
-                from_name: email,
-                message: `New subscription request from ${email}`
-            })
+            body: JSON.stringify({ email })
         });
-        
-        const result = await response.json();
-        
-        if (response.ok) {
-            // Success message
-            responseDiv.innerHTML = '<p class="text-success">Thank you for subscribing!</p>';
-            form.reset();
-        } else {
-            // Error message
-            throw new Error(result.message || 'Something went wrong');
-        }
-    } catch (error) {
-        // Show error message
-        responseDiv.innerHTML = `<p class="text-danger">${error.message}</p>`;
-    } finally {
-        // Reset submit button
-        submitButton.disabled = false;
-        submitButton.innerHTML = '<i class="fal fa-envelope"></i>';
-        
-        // Clear message after 5 seconds
-        setTimeout(() => {
-            responseDiv.innerHTML = '';
-        }, 5000);
+        return response.json();
     }
+
+    setLoading(isLoading) {
+        this.submitButton.disabled = isLoading;
+        this.submitButton.innerHTML = isLoading ? 
+            'Subscribing...<span class="button-glow"></span>' : 
+            'Subscribe<span class="button-glow"></span>';
+    }
+
+    showSuccess(message) {
+        this.messageDiv.innerHTML = `<div class="success">${message}</div>`;
+    }
+
+    showError(message) {
+        this.messageDiv.innerHTML = `<div class="error">${message}</div>`;
+    }
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    new Newsletter();
 }); 

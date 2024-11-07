@@ -450,4 +450,12 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+
+
+
+// Add this at the end of your main JS file
+document.addEventListener('DOMContentLoaded', () => {
+    new BlogScroller();
+});
+
 /* blog section end*/
