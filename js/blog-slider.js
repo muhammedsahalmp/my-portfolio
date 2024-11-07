@@ -142,21 +142,3 @@ class BlogScroller {
         this.nextBtn.classList.toggle('disabled', isAtEnd);
     }
 } 
-
-// Add the blog container element
-const blogContainer = document.querySelector('.blog-container'); // Adjust selector based on your HTML structure
-
-// Add click event listeners
-prevBtn.addEventListener('click', () => {
-    blogContainer.scrollBy({
-        left: -300, // Adjust scroll amount as needed
-        behavior: 'smooth'
-    });
-});
-
-nextBtn.addEventListener('click', () => {
-    blogContainer.scrollBy({
-        left: 300, // Adjust scroll amount as needed
-        behavior: 'smooth'
-    });
-});
